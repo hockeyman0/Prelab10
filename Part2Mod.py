@@ -79,7 +79,7 @@ class PointSet:
 		finallow = Point3D(pointxn, pointyn, pointzn)
 
 		
-		final = [[pointxp, pointyp, pointzp], [pointxn, pointyn, pointzn]]
+		final = ["(%.3f, %.3f, %.3f)" % (pointxp, pointyp, pointzp), "(%.3f, %.3f, %.3f)" % (pointxn, pointyn, pointzn)]
 		return tuple(final)
 		
 		
@@ -87,7 +87,7 @@ class PointSet:
 		final = []
 		for point in self.points:
 			close = point.nearest_point(other.points)
-			tmp = [[point.x, point.y, point.z],[close.x, close.y, close.z]]
+			tmp = ["(%.3f, %.3f, %.3f)" % (point.x, point.y, point.z),"(%.3f, %.3f, %.3f)" % (close.x, close.y, close.z)]
 			tmp = tuple(tmp)
 			final.append(tmp)
 			
