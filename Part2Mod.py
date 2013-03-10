@@ -8,4 +8,85 @@
 import sys
 import re
 import os
+import math
 
+class Point3D:
+	def __init__(self, x, y, z):
+		self.x = float(x)
+		self.y = float(y)
+		self.z = float(z)
+		
+	def distance_from(self, other):
+		tempx = self.x - other.x
+		tempy = self.y - other.y
+		tempz = self.z - other.z
+		tempall = (tempz * tempz) + (tempy * tempy) + (tempz * tempz)
+		tempall = sqrt(tempall)
+		return tempall
+		
+		
+		
+	def nearest_point(self, others):
+		mini = self.distance_from(others[0])
+		#point = Point3D(0,0,0)
+		#point.x = others[0].x
+		#point.y = others[0].y
+		#point.z = others[0].z
+		point = others.points[0]
+		for other in others:
+			temp = self.distance_from(other)
+			if temp < mini:
+				mini = temp
+				point = other
+		
+		return point
+		
+		
+		
+		
+class PointSet:
+	def __init__(self):
+		points = []
+		
+	def add_point(self, p):
+		self.points.append(p)
+		
+	def get_num_points(self):
+		return length(self.points)
+		
+	def compute_bounding_box(self):
+		pointxp = self.points[0].x
+		pointxn = self.points[0].x
+		pointyp = self.points[0].y
+		pointyn = self.points[0].y 
+		pointzp = self.points[0].z
+		pointzn = self.points[0].z
+		for point in self.points:
+			if point.x > pointxp:
+				pointxp = point.x
+			if point.x < pointxn:
+				pointxn = point.x
+			if point.x > pointxp:
+				pointyp = point.y
+			if point.x < pointxn:
+				pointyn = point.y
+			if point.x > pointxp:
+				pointzp = point.z
+			if point.x < pointxn:
+				pointzn = point.z
+				
+		finalxp = Point3D(pointxp, 0, 0)
+		finalxn = Point3D(pointxn, 0, 0)
+		finalyp = Point3D(0, pointyp, 0)
+		finalyn = Point3D(0, pointyn, 0)
+		finalzp = Point3D(0, 0, pointzp)
+		finalzn = Point3D(0, 0, pointzn)
+		
+		final = [finalxp, finalxn, finalyp, finalyn, finalzp, finalzn]
+		return tuple(final)
+		
+		
+	def compute_nearest_neighbors(self, other):
+		for point in self.points:
+			close = point.nearest_point(other)
+									
