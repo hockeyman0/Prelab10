@@ -21,7 +21,7 @@ class Point3D:
 		tempy = self.y - other.y
 		tempz = self.z - other.z
 		tempall = (tempz * tempz) + (tempy * tempy) + (tempz * tempz)
-		tempall = sqrt(tempall)
+		tempall = math.sqrt(tempall)
 		return tempall
 		
 		
@@ -32,7 +32,7 @@ class Point3D:
 		#point.x = others[0].x
 		#point.y = others[0].y
 		#point.z = others[0].z
-		point = others.points[0]
+		point = others[0]
 		for other in others:
 			temp = self.distance_from(other)
 			if temp < mini:
@@ -46,13 +46,13 @@ class Point3D:
 		
 class PointSet:
 	def __init__(self):
-		points = []
+		self.points = []
 		
 	def add_point(self, p):
 		self.points.append(p)
 		
 	def get_num_points(self):
-		return length(self.points)
+		return len(self.points)
 		
 	def compute_bounding_box(self):
 		pointxp = self.points[0].x
@@ -75,18 +75,21 @@ class PointSet:
 			if point.x < pointxn:
 				pointzn = point.z
 				
-		finalxp = Point3D(pointxp, 0, 0)
-		finalxn = Point3D(pointxn, 0, 0)
-		finalyp = Point3D(0, pointyp, 0)
-		finalyn = Point3D(0, pointyn, 0)
-		finalzp = Point3D(0, 0, pointzp)
-		finalzn = Point3D(0, 0, pointzn)
+		finalhigh = Point3D(pointxp, pointyp, pointzp)
+		finallow = Point3D(pointxn, pointyn, pointzn)
+
 		
-		final = [finalxp, finalxn, finalyp, finalyn, finalzp, finalzn]
+		final = [[pointxp, pointyp, pointzp], [pointxn, pointyn, pointzn]]
 		return tuple(final)
 		
 		
 	def compute_nearest_neighbors(self, other):
+		final = []
 		for point in self.points:
-			close = point.nearest_point(other)
+			close = point.nearest_point(other.points)
+			tmp = [[point.x, point.y, point.z],[close.x, close.y, close.z]]
+			tmp = tuple(tmp)
+			final.append(tmp)
+			
+		return final
 									
