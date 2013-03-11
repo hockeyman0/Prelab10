@@ -1,4 +1,4 @@
-in/env python
+#! /usr/bin/env python
 
 import sys
 import os
@@ -13,25 +13,25 @@ variables = { };
 #
 
 # Here is a simple example of some real values expressions
-#five = Part3Mod.RealValuedExpression(5.0)
-#twenty = Part3Mod.RealValuedExpression(20.0)
+five = Part3Mod.RealValuedExpression(5.0)
+twenty = Part3Mod.RealValuedExpression(20.0)
 
-#print "five -~-> %f" % five.evaluate(variables)
-#print "twenty -~-> %f\n" % twenty.evaluate(variables)
+print "five -~-> %f" % five.evaluate(variables)
+print "twenty -~-> %f\n" % twenty.evaluate(variables)
 
 #
 # STEP 2: Do not uncomment until STEP 1 is complete
 #
 
 # We can construct more complex expressions like five + twenty or five * 12:
-#twentyfive = Part3Mod.BinaryExpression(five, twenty, '+')
-#fivetimestwelve = Part3Mod.BinaryExpression(five, Part3Mod.RealValuedExpression(12.0), '*')
-#thirtytyfive = Part3Mod.BinaryExpression(fivetimestwelve, twentyfive, '-')
+twentyfive = Part3Mod.BinaryExpression(five, twenty, '+')
+fivetimestwelve = Part3Mod.BinaryExpression(five, Part3Mod.RealValuedExpression(12.0), '*')
+thirtytyfive = Part3Mod.BinaryExpression(fivetimestwelve, twentyfive, '-')
 
 # %s invokes the str() function on the argument to format
-#print "%s -~-> %f" % (twentyfive, twentyfive.evaluate(variables),)
-#print "%s -~-> %f" % (fivetimestwelve, fivetimestwelve.evaluate(variables),)
-#print "%s -~-> %f\n" % (thirtytyfive, thirtytyfive.evaluate(variables),) 
+print "%s -~-> %f" % (twentyfive, twentyfive.evaluate(variables),)
+print "%s -~-> %f" % (fivetimestwelve, fivetimestwelve.evaluate(variables),)
+print "%s -~-> %f\n" % (thirtytyfive, thirtytyfive.evaluate(variables),) 
 
 #
 # STEP 3: Do not uncomment until STEP 2 is complete
