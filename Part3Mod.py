@@ -36,28 +36,39 @@ class RealValuedExpression(Expression):
 		pass
 		
 	def __str__(self):
-		pass
+		return str(self.value)
+		
 
 class BinaryExpression(Expression):
 	def __init__(self, lhs, rhs, op):
-		self.lhs = lhs.evaluate
-		self.rhs = rhs.evaluate
+		self.lhs = lhs
+		#print lhs.evaluate
+		self.rhs = rhs
 		self.op = op
-		pass
 
 	def evaluate(self, variables):
-		pass
+		out = None
+		if self.op == "+":
+			out = self.lhs.evaluate(variables) + self.rhs.evaluate(variables)
+		if self.op == "-":
+			out = self.lhs.evaluate(variables) - self.rhs.evaluate(variables)
+		if self.op == "*":
+			out = self.lhs.evaluate(variables) * self.rhs.evaluate(variables)
+		if self.op == "/":
+			out = self.lhs.evaluate(variables) / self.rhs.evaluate(variables)
+			
+		return out
 
 	def __str__(self):
-		out = ""
-		pass
+		return ("(%s%s%s)" % (self.lhs, self.op, self.rhs))
+		
 
 class VariableExpression(Expression):
 	def __init__(self, variable_name):
-		pass
+		self.variable_name = variable_name
 	
 	def evaluate(self, variables):
-		pass
+		return variables.get(self.variable_name)
 			
 	def __str__(self):
-		pass
+		return ("%s" % (self.variable_name))

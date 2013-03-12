@@ -27,7 +27,7 @@ print "twenty -~-> %f\n" % twenty.evaluate(variables)
 twentyfive = Part3Mod.BinaryExpression(five, twenty, '+')
 fivetimestwelve = Part3Mod.BinaryExpression(five, Part3Mod.RealValuedExpression(12.0), '*')
 thirtytyfive = Part3Mod.BinaryExpression(fivetimestwelve, twentyfive, '-')
-
+#print thirtytyfive.evaluate(variables)
 # %s invokes the str() function on the argument to format
 print "%s -~-> %f" % (twentyfive, twentyfive.evaluate(variables),)
 print "%s -~-> %f" % (fivetimestwelve, fivetimestwelve.evaluate(variables),)
@@ -38,19 +38,19 @@ print "%s -~-> %f\n" % (thirtytyfive, thirtytyfive.evaluate(variables),)
 #
 
 # Let introduce variables into the mix
-#variables['scale'] = 0.265
-#variables['phi'] = 1.257
-#variables['x'] = 16.3
+variables['scale'] = 0.265
+variables['phi'] = 1.257
+variables['x'] = 16.3
 
-#scale_var = Part3Mod.VariableExpression('scale')
-#phi_var = Part3Mod.VariableExpression('phi')
-#x_var = Part3Mod.VariableExpression('x')
+scale_var = Part3Mod.VariableExpression('scale')
+phi_var = Part3Mod.VariableExpression('phi')
+x_var = Part3Mod.VariableExpression('x')
 
-#sixty_scaled = Part3Mod.BinaryExpression(fivetimestwelve, scale_var, '*')
-#x_over_phi = Part3Mod.BinaryExpression(x_var, phi_var, '/')
+sixty_scaled = Part3Mod.BinaryExpression(fivetimestwelve, scale_var, '*')
+x_over_phi = Part3Mod.BinaryExpression(x_var, phi_var, '/')
 
-#print "%s -~-> %f" % (sixty_scaled, sixty_scaled.evaluate(variables),)
-#print "%s -~-> %f\n" % (x_over_phi, x_over_phi.evaluate(variables),)
+print "%s -~-> %f" % (sixty_scaled, sixty_scaled.evaluate(variables),)
+print "%s -~-> %f\n" % (x_over_phi, x_over_phi.evaluate(variables),)
 
 #
 # STEP 4: Do not uncomment until STEP 3 is complete
