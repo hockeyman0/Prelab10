@@ -57,8 +57,8 @@ print "%s -~-> %f\n" % (x_over_phi, x_over_phi.evaluate(variables),)
 #
 
 # Optional: Making things really complicated...
-#what1 = Part3Mod.BinaryExpression(sixty_scaled, x_over_phi, '-')
-#what2 = Part3Mod.BinaryExpression(what1, what1, '+')
+what1 = Part3Mod.BinaryExpression(sixty_scaled, x_over_phi, '-')
+what2 = Part3Mod.BinaryExpression(what1, what1, '+')
 
-#print "%s -~-> %f\n" % (what2, what2.evaluate(variables),)
+print "%s -~-> %f\n" % (what2, what2.evaluate(variables),)
 
