@@ -28,10 +28,6 @@ class Point3D:
 		
 	def nearest_point(self, others):
 		mini = self.distance_from(others[0])
-		#point = Point3D(0,0,0)
-		#point.x = others[0].x
-		#point.y = others[0].y
-		#point.z = others[0].z
 		point = others[0]
 		for other in others:
 			temp = self.distance_from(other)
@@ -40,6 +36,10 @@ class Point3D:
 				point = other
 		
 		return point
+		
+	def clone(self):
+		cloned = self
+		return cloned
 		
 		
 		
