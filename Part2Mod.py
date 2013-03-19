@@ -20,7 +20,7 @@ class Point3D:
 		tempx = self.x - other.x
 		tempy = self.y - other.y
 		tempz = self.z - other.z
-		tempall = (tempz * tempz) + (tempy * tempy) + (tempz * tempz)
+		tempall = (tempx * tempx) + (tempy * tempy) + (tempz * tempz)
 		tempall = math.sqrt(tempall)
 		return tempall
 		
@@ -66,13 +66,13 @@ class PointSet:
 				pointxp = point.x
 			if point.x < pointxn:
 				pointxn = point.x
-			if point.x > pointxp:
+			if point.y > pointyp:
 				pointyp = point.y
-			if point.x < pointxn:
+			if point.y < pointyn:
 				pointyn = point.y
-			if point.x > pointxp:
+			if point.z > pointzp:
 				pointzp = point.z
-			if point.x < pointxn:
+			if point.z < pointzn:
 				pointzn = point.z
 				
 		finalhigh = Point3D(pointxp, pointyp, pointzp)
