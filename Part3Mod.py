@@ -33,7 +33,6 @@ class RealValuedExpression(Expression):
 	def evaluate(self, variables):
 		#return variables.get(self)
 		return self.value
-		pass
 		
 	def __str__(self):
 		return str(self.value)
